@@ -36,10 +36,7 @@
     description: "workstation"
     inventory: "{{static_inventory_name}}"
     state: present
-    tower_host: tower1.{{tower_GUID}}.example.opentlc.com
-    tower_username: admin
-    tower_password: oomrCTk5v9fm
-    tower_verify_ssl: no
+    tower_config_file: "/root/.tower_cli.cfg"
 
 - name: Associate workstation host to group 
   command: | 
@@ -52,10 +49,7 @@
     organization: Default
     state: present
     kind: ssh
-    tower_host: tower1.{{tower_GUID}}.example.opentlc.com
-    tower_username: admin
-    tower_password: oomrCTk5v9fm
-    tower_verify_ssl: no
+    tower_config_file: "/root/.tower_cli.cfg"
     ssh_key_data: /root/.ssh/mykey.pem
     username: "{{ opentlc_login }}"
 
