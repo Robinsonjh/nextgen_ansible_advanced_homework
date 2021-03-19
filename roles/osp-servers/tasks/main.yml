@@ -1,7 +1,7 @@
 ---
 - name: Create instances
   os_server:
-    cloud: "{{ __server.cloud_name | default('openstack') }}"
+    cloud: "{{ __server.cloud.name | default('openstack') }}"
     name: "{{ __server.name }}"
     image: "{{ __server.image }}"
     key_name: "{{ __server.key | default('ansible_ssh_key') }}"
@@ -17,7 +17,7 @@
       curl -o /etc/yum.repos.d/ http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
       cat /root/.ssh/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
       cat /root/.ssh/mykey.pub >> /home/cloud-user/.ssh/authorized_keys
-  loop: "{{ osp_servers.[0] }}"
+  loop: "{{ osp_servers[0] }}"
   loop_control:
     loop_var: __server
     
