@@ -4,10 +4,10 @@
 
 - name: wait
   pause:
-  
+
 - name: Job template for OSP Instances
   tower_job_template:
-    name: " {{job_template_name_osp_instance }}"
+    name: " {{ job_template_name_osp_instance }}"
     job_type: run
     inventory: "{{ static_inventory_name }}"
     project: "{{ proj_name }}"
