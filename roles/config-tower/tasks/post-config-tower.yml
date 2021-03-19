@@ -4,6 +4,9 @@
     organization: Default
     description: "Homework Assignment project"
     state: present
+    scm_type: git
+    scm_update_on_launch: yes
+    scm_url: "{{ scm_url }}"
     tower_host: tower1.{{ tower_GUID }}.example.opentlc.com
     tower_username: admin
     tower_password: oomrCTk5v9fm
@@ -36,8 +39,6 @@
     description: "workstation"
     inventory: "{{static_inventory_name}}"
     state: present
-    scm_type: git
-    scm_url: "{{ scm_url }}"
     tower_host: tower1.{{tower_GUID}}.example.opentlc.com
     tower_username: admin
     tower_password: oomrCTk5v9fm
