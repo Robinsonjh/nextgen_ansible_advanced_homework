@@ -8,7 +8,6 @@
     scm_update_on_launch: yes
     scm_url: "{{ scm_url }}"
     tower_config_file: "/root/.tower_cli.cfg"
-    tower_verify_ssl: False
 
 - name: Machine Credential to connect to workstation using openstack.pub
   tower_credential:
