@@ -1,6 +1,8 @@
 - name: test
   debug:
     msg: "{{ osp_instances_playbook }}"
+
+- name: wait
   pause:
   
 - name: Job template for OSP Instances
