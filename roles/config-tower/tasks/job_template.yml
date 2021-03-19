@@ -1,10 +1,3 @@
-- name: test
-  debug:
-    msg: "{{ osp_instances_playbook }}"
-
-- name: wait
-  pause:
-
 - name: Job template for OSP Instances
   tower_job_template:
     name: " {{ job_template_name_osp_instances }}"
@@ -21,10 +14,17 @@
   command: |
     tower-cli job_template associate_ig --job-template "{{job_template_name_osp_instances}}" --instance-group "{{instance_group_name}}"
 
+- name: Create Vault Credential
+  tower_credential:
+    name: yum-repo-cred
+    organization: " {{org_name }}"
+    kind: vault
+    vault_password: ansible
 
-- name: Create vault credential
-  command: |
-    tower-cli credential create --name="yum-repo-cred" --organization "{{org_name}}" --inputs='{"vault_password":"ansible"}'  --credential-type="Vault"
+
+#- name: Create vault credential
+#  command: |
+#    tower-cli credential create --name="yum-repo-cred" --organization "{{org_name}}" --inputs='{"vault_password":"ansible"}'  --credential-type="Vault"
 
 - name: Job template for 3tier app deploy on QA Env
   command: |

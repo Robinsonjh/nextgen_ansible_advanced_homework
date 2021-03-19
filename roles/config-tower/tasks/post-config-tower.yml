@@ -12,7 +12,7 @@
     tower_password: oomrCTk5v9fm
     tower_verify_ssl: no
 
-- name: Machine Credentail to connect to workstation using openstack.pub
+- name: Machine Credential to connect to workstation using openstack.pub
   tower_credential:
     name: Connect_to_workstation
     organization: Default
