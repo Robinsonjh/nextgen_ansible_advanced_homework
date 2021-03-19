@@ -9,7 +9,7 @@
 - name: Create Vault Credential
   tower_credential:
     name: yum-repo-cred
-    organization: " {{org_name }}"
+    organization: " {{ org_name }}"
     kind: vault
     vault_password: ansible
 
