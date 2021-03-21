@@ -14,7 +14,6 @@
     userdata: |
       #!/bin/bash
       cat /root/.ssh/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
-      cat /root/.ssh/mykey.pub >> /home/cloud-user/.ssh/authorized_keys
 
 - name:
   pause:
