@@ -11,11 +11,7 @@
     nics:
       - net-name: int_network
     meta: "group={{ __server.value.meta.0.group }},deployment_name={{ __server.value.meta.0.deployment_name }}"
-    userdata: |
-      #!/bin/bash
-      curl -o /etc/yum.repos.d/ http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
-      cat /root/.ssh/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
-      cat /root/.ssh/mykey.pub >> /home/cloud-user/.ssh/authorized_keys
+    userdata: "{{ __server.value.userdata }}"
   loop: "{{ osp_servers | dict2items }}"
   loop_control:
     loop_var: __server

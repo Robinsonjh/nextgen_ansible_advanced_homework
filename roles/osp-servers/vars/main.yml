@@ -11,6 +11,10 @@ osp_servers:
     security_group: frontend
     meta:
       - { group: frontends, deployment_name: QA}
+    userdata: |
+      curl -o /etc/yum.repos.d/ http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
+      cat /root/.ssh/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+      cat /root/.ssh/mykey.pub >> /home/cloud-user/.ssh/authorized_keys
   app1:
     cloud: openstack
     name: app1
@@ -21,6 +25,11 @@ osp_servers:
     security_group: apps
     meta:
       - { group: apps, deployment_name: QA}
+    userdata: |
+      curl -o /etc/yum.repos.d/ http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
+      cat /root/.ssh/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+      cat /root/.ssh/mykey.pub >> /home/cloud-user/.ssh/authorized_keys
+
   app2:
     cloud: openstack
     name: app2
@@ -31,6 +40,10 @@ osp_servers:
     security_group: apps
     meta:
       - { group: apps, deployment_name: QA}
+    userdata: |
+      curl -o /etc/yum.repos.d/ http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
+      cat /root/.ssh/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+      cat /root/.ssh/mykey.pub >> /home/cloud-user/.ssh/authorized_keys
   db:
     cloud: openstack
     name: db
@@ -41,3 +54,7 @@ osp_servers:
     security_group: db
     meta:
       - { group: appdbs, deployment_name: QA}
+    userdata: |
+      curl -o /etc/yum.repos.d/ http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
+      cat /root/.ssh/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+      cat /root/.ssh/mykey.pub >> /home/cloud-user/.ssh/authorized_keys
