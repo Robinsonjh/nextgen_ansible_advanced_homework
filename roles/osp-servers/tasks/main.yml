@@ -3,12 +3,12 @@
 
 - name: pass public key 1 to workstation
   copy:
-    src: "mykey.pub"
+    src: "{{ role_path }}/files/mykey.pub"
     dest: "/tmp/"
 
 - name: pass public key 2 to workstation
   copy:
-    src: "openstack.pub"
+    src: "{{ role_path }}/files/openstack.pub"
     dest: "/tmp/"
 
 - name: pause
