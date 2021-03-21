@@ -1,8 +1,12 @@
-- name: pass public keys to workstation
+- name: pass public 1 to workstation
   copy:
-    src: "{{ item }}"
-    dest: "/root/.ssh/"
-  with_fileglob: "{{ role_path}}/files/*.pub"
+    src: "mykey.pub"
+    dest: "/tmp/mykey.pub"
+
+- name: pass public 2 to workstation
+  copy:
+    src: "openstack.pub"
+    dest: "/tmp/openstack.pub"
 
 - name: Create instances
   os_server:
