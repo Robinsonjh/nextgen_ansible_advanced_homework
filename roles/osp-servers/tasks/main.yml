@@ -4,12 +4,12 @@
 - name: pass public key 1 to workstation
   copy:
     src: "mykey.pub"
-    dest: "/tmp/mykey.pub"
+    dest: "/home/awx/mykey.pub"
 
 - name: pass public key 2 to workstation
   copy:
     src: "openstack.pub"
-    dest: "/home/cloud-user/.ssh/openstack.pub"
+    dest: "/home/awx/openstack.pub"
 
 - name: pause
   pause:
