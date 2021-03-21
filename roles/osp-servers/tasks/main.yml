@@ -1,8 +1,10 @@
 - name: pass public keys to workstation
   copy:
-    src: "{{ item }}"
-    dest: /tmp/
-  with_fileglob: "*.pub"
+    src: "openstack.pub"
+    dest: /tmp/openstack.pub
+
+- name: test
+  pause:
 
 - name: Create instances
   os_server:
