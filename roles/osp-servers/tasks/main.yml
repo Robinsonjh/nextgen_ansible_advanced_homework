@@ -20,9 +20,6 @@
   loop_control:
     loop_var: __server
 
-- name:
-  pause:
-    
 - name: Add floating IP to instance
   os_floating_ip:
     cloud: "{{ __server.value.cloud | default('openstack') }}"
