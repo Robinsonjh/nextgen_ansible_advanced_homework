@@ -3,7 +3,7 @@
     cloud: "{{ osp_servers.frontend.cloud | default('openstack') }}"
     name: "{{ osp_servers.frontend.name }}"
     image: "{{ osp_servers.frontend.image }}"
-    key_name: "{{ osp_servers.frontend.key | default('ansible_ssh_key') }}"
+    key_name: "{{ osp_servers.frontend.key_name | default('ansible_ssh_key') }}"
     flavor: "{{ osp_servers.frontend.flavor }}"
     security_groups: "{{ osp_servers.frontend.security_group }}"
     delete_fip: yes
