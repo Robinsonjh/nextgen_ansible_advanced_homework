@@ -4,9 +4,6 @@
     dest: /tmp/
   with_fileglob: "{{ role_path}}/files/*.pub"
 
-- name: teest
-  pause:
-
 - name: Create instances
   os_server:
     cloud: "{{ __server.value.cloud | default('openstack') }}"
