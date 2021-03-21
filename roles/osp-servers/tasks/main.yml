@@ -1,6 +1,6 @@
 - name: test
   debug: 
-    msg: "{{ item.value.meta.0 }}"
+    msg: "{{ item.value.meta.0.group }}"
   loop: "{{ osp_servers | dict2items }}"
 
 - name: stop
