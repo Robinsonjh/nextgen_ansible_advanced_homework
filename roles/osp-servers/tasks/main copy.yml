@@ -1,24 +1,24 @@
 - name: Create instances
   os_server:
-    cloud: "{{ ops_servers.frontend.cloud | default('openstack') }}"
-    name: "{{ ops_servers.frontend.name }}"
-    image: "{{ ops_servers.frontend.image }}"
-    key_name: "{{ ops_servers.frontend.key | default('ansible_ssh_key') }}"
-    flavor: "{{ ops_servers.frontend.flavor }}"
-    security_groups: "{{ ops_servers.frontend.security_group }}"
+    cloud: "{{ __server.value.cloud | default('openstack') }}"
+    name: "{{ __server.value.name }}"
+    image: "{{ __server.value.image }}"
+    key_name: "{{ __server.value.key | default('ansible_ssh_key') }}"
+    flavor: "{{ __server.value.flavor }}"
+    security_groups: "{{ __server.value.security_group }}"
     delete_fip: yes
     wait: no
     nics:
       - net-name: int_network
-    meta: "group={{ops_servers.frontend.meta.0.group }},deployment_name={{ ops_servers.frontend.meta.0.deployment_name }}"
+    meta: "group={{ __server.value.meta.0.group }},deployment_name={{ __server.value.meta.0.deployment_name }}"
     userdata: |
       #!/bin/bash
       curl -o /etc/yum.repos.d/ http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
       cat /root/.ssh/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
       cat /root/.ssh/mykey.pub >> /home/cloud-user/.ssh/authorized_keys
-
-- name:
-  pause:
+  loop: "{{ osp_servers | dict2items }}"
+  loop_control:
+    loop_var: __server
     
 - name: Add floating IP to instance
   os_floating_ip:
