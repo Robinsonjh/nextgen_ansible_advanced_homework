@@ -13,7 +13,6 @@
     meta: "group={{osp_servers.frontend.meta.0.group }},deployment_name={{ osp_servers.frontend.meta.0.deployment_name }}"
     userdata: |
       #!/bin/bash
-      curl -o /etc/yum.repos.d/ http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
       cat /root/.ssh/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
       cat /root/.ssh/mykey.pub >> /home/cloud-user/.ssh/authorized_keys
 
