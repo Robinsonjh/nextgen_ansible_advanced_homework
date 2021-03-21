@@ -1,12 +1,12 @@
 - name: pass public key 1 to workstation
   copy:
     src: "mykey.pub"
-    dest: "~/.ssh/mykey.pub"
+    dest: "/home/cloud-user/.ssh/mykey.pub"
 
 - name: pass public key 2 to workstation
   copy:
     src: "openstack.pub"
-    dest: "~/.ssh/openstack.pub"
+    dest: "/home/cloud-user/.ssh/openstack.pub"
 
 
 - name: check user
