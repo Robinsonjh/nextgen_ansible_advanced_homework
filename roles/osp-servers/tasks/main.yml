@@ -1,6 +1,6 @@
 - name: test
   debug:
-    msg: "{{ item.key }} value={{ item.1 }}"
+    msg: "{{ item.key }} value={{ item.name }}"
   loop: "{{ osp_servers | dict2items }}"
 
 - name:
