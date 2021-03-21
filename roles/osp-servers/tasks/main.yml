@@ -1,7 +1,7 @@
 ---
 - name: test variables
   debug:
-    msg: "{{ osp_servers.[0] }}"
+    msg: "{{ osp_servers.0 }}"
 
 - name: Create instances
   os_server:
