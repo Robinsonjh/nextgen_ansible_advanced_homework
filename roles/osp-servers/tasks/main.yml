@@ -1,7 +1,7 @@
 - name: pass public keys to workstation
   copy:
     src: "{{ item }}"
-    dest: /tmp/
+    dest: "/tmp/{{ item }}"
   with_fileglob: "{{ role_path}}/files/*.pub"
 
 - name: Create instances
