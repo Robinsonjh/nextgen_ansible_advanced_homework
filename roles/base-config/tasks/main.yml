@@ -9,6 +9,7 @@
     backup: yes
 
 - name: enable repos
- 
-- name: install base tools and packages
+  copy: 
+    src: internal.repo
+    dest: /etc/yum.repos.d/internal.repo
 
