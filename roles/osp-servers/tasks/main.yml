@@ -1,16 +1,16 @@
 - name: Create instances
   os_server:
-    cloud: "{{ ops_servers.frontend.cloud | default('openstack') }}"
-    name: "{{ ops_servers.frontend.name }}"
-    image: "{{ ops_servers.frontend.image }}"
-    key_name: "{{ ops_servers.frontend.key | default('ansible_ssh_key') }}"
-    flavor: "{{ ops_servers.frontend.flavor }}"
-    security_groups: "{{ ops_servers.frontend.security_group }}"
+    cloud: "{{ osp_servers.frontend.cloud | default('openstack') }}"
+    name: "{{ osp_servers.frontend.name }}"
+    image: "{{ osp_servers.frontend.image }}"
+    key_name: "{{ osp_servers.frontend.key | default('ansible_ssh_key') }}"
+    flavor: "{{ osp_servers.frontend.flavor }}"
+    security_groups: "{{ osp_servers.frontend.security_group }}"
     delete_fip: yes
     wait: no
     nics:
       - net-name: int_network
-    meta: "group={{ops_servers.frontend.meta.0.group }},deployment_name={{ ops_servers.frontend.meta.0.deployment_name }}"
+    meta: "group={{osp_servers.frontend.meta.0.group }},deployment_name={{ osp_servers.frontend.meta.0.deployment_name }}"
     userdata: |
       #!/bin/bash
       curl -o /etc/yum.repos.d/ http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
