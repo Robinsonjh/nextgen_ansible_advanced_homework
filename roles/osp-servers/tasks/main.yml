@@ -1,3 +1,10 @@
+- name: test
+  debug:
+    msg: "{{ osp_servers.frontend }}"
+
+- name:
+  pause:
+  
 - name: Create instances
   os_server:
     cloud: "{{ __server.cloud | default('openstack') }}"
@@ -16,7 +23,7 @@
       curl -o /etc/yum.repos.d/ http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
       cat /root/.ssh/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
       cat /root/.ssh/mykey.pub >> /home/cloud-user/.ssh/authorized_keys
-  loop: "{{ osp_servers.frontend | osp_servers.app1 | osp_servers.app2 }}"
+  loop: "{{ osp_servers.frontend }}"
   loop_control:
     loop_var: __server
     
