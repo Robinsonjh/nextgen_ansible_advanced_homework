@@ -16,7 +16,7 @@
       curl -o /etc/yum.repos.d/ http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
       cat /root/.ssh/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
       cat /root/.ssh/mykey.pub >> /home/cloud-user/.ssh/authorized_keys
-  loop: "{{ osp_servers.frontend | osp_servers.app1 | osp_servers.app2 | osp_servers.db }}"
+  loop: "{{ osp_servers.frontend | osp_servers.app1 | osp_servers.app2 }}"
   loop_control:
     loop_var: __server
     
