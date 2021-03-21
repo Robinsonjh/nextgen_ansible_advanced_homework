@@ -1,7 +1,7 @@
 ---
 - name: test variables
   debug:
-    msg: "{{ osp_servers.key.flavor }}"
+    msg: "{{ osp_servers.value.name }}"
 
 - name: Create instances
   os_server:
