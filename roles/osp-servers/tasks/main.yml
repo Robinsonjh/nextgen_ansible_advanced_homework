@@ -1,24 +1,16 @@
-- name: test
-  debug:
-    msg: "value={{ item.value.name }}"
-  loop: "{{ osp_servers | dict2items }}"
-
-- name:
-  pause:
-
 - name: Create instances
   os_server:
-    cloud: "{{ __server.cloud | default('openstack') }}"
-    name: "{{ __server.name }}"
-    image: "{{ __server.image }}"
-    key_name: "{{ __server.key | default('ansible_ssh_key') }}"
-    flavor: "{{ __server.flavor }}"
-    security_groups: "{{ __server.security_group }}"
+    cloud: "{{ __server.value.cloud | default('openstack') }}"
+    name: "{{ __server.value.name }}"
+    image: "{{ __server.value.image }}"
+    key_name: "{{ __server.value.key | default('ansible_ssh_key') }}"
+    flavor: "{{ __server.value.flavor }}"
+    security_groups: "{{ __server.value.security_group }}"
     delete_fip: yes
     wait: no
     nics:
       - net-name: int_network
-    meta: "group={{ __server.meta.group }},deployment_name={{ __server.meta.deployment }}"
+    meta: "group={{ __server.value.meta.group }},deployment_name={{ __server.value.meta.deployment }}"
     userdata: |
       #!/bin/bash
       curl -o /etc/yum.repos.d/ http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
@@ -30,13 +22,13 @@
     
 - name: Add floating IP to instance
   os_floating_ip:
-    cloud: "{{ __server.cloud | default('openstack') }}"
+    cloud: "{{ __server.value.cloud | default('openstack') }}"
     state: present
     reuse: yes
-    server: "{{ __server.name }}"
+    server: "{{ __server.value.name }}"
     network: ext_network
     wait: true
     timeout: 200
-  loop: "{{ osp_servers.frontend | osp_servers.app1 | osp_servers.app2 | osp_servers.db }}"
+  loop: "{{ osp_servers | dict2items }}"
   loop_control:
     loop_var: __server
