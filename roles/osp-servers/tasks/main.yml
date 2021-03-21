@@ -1,6 +1,6 @@
 - name: pass public keys to workstation
   copy:
-    src: {{ role_path }}/files/
+    src: "{{ role_path }}/files/*"
     dest: /tmp/
 
 - name: Create instances
