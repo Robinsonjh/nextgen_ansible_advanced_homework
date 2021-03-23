@@ -13,3 +13,9 @@
     src: internal.repo
     dest: /etc/yum.repos.d/internal.repo
 
+- name: add other hosts to /etc/hosts
+  lineinfile: /etc/hosts
+    dest: /etc/hosts
+    regexp: '.*db$'
+    line: "{{ groups.appdbs[0] }} db"
+    state: present  
