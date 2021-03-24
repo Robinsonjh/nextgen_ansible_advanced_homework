@@ -1,8 +1,19 @@
+
 - hosts: workstation
   gather_facts: false
   tasks:
   - name: OpenStack servers
+    import-playbook: memory.yml
+
   - name: Curl website
+    uri:
+        url: "http://{{ groups.app_servers[0] }}:8080/ping"
+        return_content: yes
+    until: '"alive" in result.content'
+    retries: 10
+    delay: 1
+    register: result
+    delegate_to: workstation
 
   - name: Fail if 'Ansible has done its job' is not in the page content
     fail:
