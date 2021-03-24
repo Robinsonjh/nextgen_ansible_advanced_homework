@@ -7,8 +7,8 @@
   register: r_os_servers
 
 - name: test
-  msg: 
-    debug: "{{ r_os_servers.openstack_servers.name }}"
+  debug: 
+    msg: "{{ r_os_servers.openstack_servers.name }}"
 
 - name: Delete instances
   os_server:
