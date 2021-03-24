@@ -8,6 +8,7 @@
      add_host:
       name: "{{ item.public_v4 }}"
       group: "{{ item.metadata.group }}"
+      private_ip: " {{ item.private_v4 }}"
       # ansible_ssh_private_key_file: ~/.ssh/openstack.pem
       # ansible_ssh_user: cloud-user
      with_items: "{{result.openstack_servers}}"
@@ -18,10 +19,3 @@
       #      ansible_ssh_private_key_file: ~/.ssh/openstack.pem
       #  ansible_ssh_user: cloud-user
      with_items: "{{result.openstack_servers}}"
-
-   - name: add other db host to /etc/hosts
-     template:
-      src: hosts.j2
-      dest: /etc/hosts
-     when: item.name == "db"
-     with_items: "{{ result.openstack_servers }}"
