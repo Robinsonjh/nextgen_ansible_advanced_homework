@@ -25,4 +25,4 @@
       regexp: '.*db$'
       line: "{{ result.openstack_servers.private_v4 }} db"
       state: present
-     when: "{{ resultopenstack_servers.name }}" == "db"
+     when: resultopenstack_servers.name == "db"
