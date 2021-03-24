@@ -15,7 +15,7 @@
 # Setup application servers tier
 
 - name: setup app tier
-  hosts: apps[1]
+  hosts: apps
   become: yes
   gather_facts: false
   roles:
