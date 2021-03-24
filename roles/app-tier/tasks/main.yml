@@ -3,7 +3,7 @@
   lineinfile:
     dest: /etc/hosts
     regexp: '.*db$'
-    line: "{{ hostvars[groups['host_group'][0]].private_ip }} db"
+    line: "{{ hostvars[groups['appdbs'][0]].private_ip }} db"
     state: present
 
 - name: Create flask user
