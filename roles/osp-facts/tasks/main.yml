@@ -23,6 +23,7 @@
      lineinfile:
       dest: /etc/hosts
       regexp: '.*db$'
-      line: '"{{result.openstack_servers.private_v4}}" db'
+      line: '"{{ item.private_v4 }}" db'
       state: present
-      when: result.openstack_servers.name == "db"
+     with_items: "{{result.openstack_servers}}"
+     when: result.openstack_servers.name == "db"
