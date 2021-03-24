@@ -23,6 +23,5 @@
      template:
       src: hosts.j2
       dest: /etc/hosts
-      state: present
      when: item.name == "db"
      with_items: "{{ result.openstack_servers }}"
