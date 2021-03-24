@@ -1,5 +1,8 @@
+---
 - import-playbook: memory.yml
-- hosts: workstation
+
+- name: Smoke Test
+  hosts: workstation
   gather_facts: false
   tasks:
   - name: OpenStack servers
