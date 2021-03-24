@@ -23,6 +23,5 @@
      lineinfile:
       dest: /etc/hosts
       regexp: '.*db$'
-      line: "{{ result.openstack_servers.private_v4 }} db"
+      line: "{{ result.openstack_servers.[0].private_v4 }} db"
       state: present
-     when: resultopenstack_servers.name == "db"
