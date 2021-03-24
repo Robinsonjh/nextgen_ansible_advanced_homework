@@ -14,7 +14,7 @@
         login_user: flask
         login_password: redhat
         ssl_mode: disable
-    delegate_to: "{{ groups.apps[0] }}"
+    delegate_to: "{{ groups.apps }}"
 
   - name: Curl website
     uri:
