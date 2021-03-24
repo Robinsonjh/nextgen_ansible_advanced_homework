@@ -5,7 +5,7 @@
     region_name: regionOne
   register: r_os_servers
 
-- name: Add in memory hosts to inventory
+- name: Delete the instances
   os_server:
     cloud: openstack
     name: "{{ item.name }}"
