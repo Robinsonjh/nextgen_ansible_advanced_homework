@@ -5,7 +5,7 @@
   hosts: workstation
   gather_facts: false
   tasks:
-  - name: OpenStack servers
+ # - name: OpenStack servers
 
 
   - name: Curl website
