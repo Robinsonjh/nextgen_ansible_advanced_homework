@@ -1,5 +1,5 @@
 ---
-- import-playbook: memory.yml
+- include-playbook: memory.yml
 
 - name: Smoke Test
   hosts: workstation
