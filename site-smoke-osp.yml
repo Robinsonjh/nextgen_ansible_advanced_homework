@@ -7,6 +7,14 @@
   tasks:
  # - name: OpenStack servers
 
+  - name: Smoketest Postgres database
+    postgresql_ping:
+        db: flask_db
+        login_host: "{{ groups.appdbs[0] }}"
+        login_user: flask
+        login_password: redhat
+        ssl_mode: disable
+    delegate_to: "{{ groups.apps[0] }}"
 
   - name: Curl website
     uri:
