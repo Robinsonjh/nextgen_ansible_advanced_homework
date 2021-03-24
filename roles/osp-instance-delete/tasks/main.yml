@@ -10,6 +10,9 @@
   debug: 
     msg: "{{ r_os_servers.openstack_servers }}"
 
+- name: pause
+  pause:
+
 - name: Delete instances
   os_server:
     cloud: openstack
