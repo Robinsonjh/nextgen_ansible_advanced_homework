@@ -26,4 +26,4 @@
       line: '"{{ item.private_v4 }}" db'
       state: present
      with_items: "{{result.openstack_servers}}"
-     when: result.openstack_servers.name == "db"
+     when: item.name == "db"
