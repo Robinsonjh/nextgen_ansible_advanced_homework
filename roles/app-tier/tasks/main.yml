@@ -1,10 +1,10 @@
 ---
-- name: add other db host to /etc/hosts
-  lineinfile:
-    dest: /etc/hosts
-    regexp: '.*db$'
-    line: "{{ groups.appdbs[0] }} db"
-    state: present
+#- name: add other db host to /etc/hosts
+#  lineinfile:
+#    dest: /etc/hosts
+#    regexp: '.*db$'
+#    line: "{{ groups.appdbs[0] }} db"
+#    state: present
 
 - name: Create flask user
   user:
