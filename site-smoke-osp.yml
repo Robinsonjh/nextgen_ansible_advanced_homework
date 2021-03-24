@@ -16,7 +16,7 @@
     retries: 10
     delay: 1
     register: result
-    delegate_to: workstation
+    delegate_to: localhost
 
   - name: Fail if 'Ansible has done its job' is not in the page content
     fail:
