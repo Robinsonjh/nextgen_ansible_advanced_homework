@@ -1,14 +1,26 @@
 ---
-# tasks file for roles/osp-instance-delete
-- name: Fetch Instance Info
+- name: Fetch instance information
   os_server_info:
-      cloud: openstack
-      region_name: regionOne
+    cloud: openstack
+    region_name: regionOne
   register: r_os_servers
 
-- name: Delete instances
+- name: Add in memory hosts to inventory
   os_server:
-    cloud: openstack
-    name: "{{ item.id }}"
+    name: "{{ item.name }}"
     state: absent
-  loop: "{{ r_os_servers.openstack_servers.id }}"
+  loop: "{{ r_os_servers.openstack_servers }}"
+
+# tasks file for roles/osp-instance-delete
+#- name: Fetch Instance Info
+#  os_server_info:
+#      cloud: openstack
+#      region_name: regionOne
+#  register: r_os_servers
+#
+#- name: Delete instances
+#  os_server:
+#    cloud: openstack
+#    name: "{{ item.id }}"
+#    state: absent
+#  loop: "{{ r_os_servers.openstack_servers.id }}"
