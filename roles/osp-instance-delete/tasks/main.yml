@@ -8,7 +8,7 @@
 
 - name: test
   debug: 
-    msg: "{{ r_os_servers.openstack_servers.public_v4 }}"
+    msg: "{{ r_os_servers.openstack_servers.id }}"
 
 - name: pause
   pause:
