@@ -1,4 +1,4 @@
-- hosts: localhost
+- hosts: workstation
   gather_facts: false
   roles:
   - name: osp-facts
@@ -31,6 +31,3 @@
   roles:
     - name: base-config
     - name: lb-tier
-
-
-

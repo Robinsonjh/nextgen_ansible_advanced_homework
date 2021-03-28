@@ -11,4 +11,3 @@
       group: "{{ item.metadata.group }},{{ item.metadata.deployment_name }}"
       private_ip: " {{ item.private_v4 }}"
      with_items: "{{result.openstack_servers}}"
-  when: ansible_hostame == workstation
