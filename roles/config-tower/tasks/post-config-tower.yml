@@ -15,9 +15,7 @@
     organization: Default
     state: present
     kind: ssh
-    tower_host: tower1.{{tower_GUID}}.example.opentlc.com
-    tower_username: admin
-    tower_password: oomrCTk5v9fm
+    tower_config_file: "/root/.tower_cli.cfg"
     ssh_key_data: "/root/.ssh/openstack.pem"
     username: cloud-user
 
