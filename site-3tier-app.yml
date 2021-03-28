@@ -2,6 +2,7 @@
   gather_facts: false
   roles:
   - name: osp-facts
+  when: ansible_hostname == workstation
 
 # Setup database tier
 
