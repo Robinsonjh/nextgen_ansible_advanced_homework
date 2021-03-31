@@ -3,9 +3,10 @@
   lineinfile:
     dest: /etc/hosts
     regexp: '.*db$'
-    line: "{{ hostvars[groups['appdbs'][0]].private_ip }} db"
+    line: "{{ hostvars[groups['appdbs'][0]].private_ip }} appdb1"
     state: present
-
+  when: hostvars[groups['appdbs'][0]].private_ip is defined
+  
 - name: Create flask user
   user:
     name: "{{ flask_user }}"
@@ -27,6 +28,11 @@
     force: yes
   tags:
     - git
+
+- name: Add the correct index to the Site
+  template:
+    src: index.html.j2
+    dest: /opt/resource_hub/templates/index.html
 
 - name: "Change flash repo owner to {{ flask_user }} recursively"      
   file: 
