@@ -1,4 +1,20 @@
 ---
+- name: add app1 host to /etc/hosts
+  lineinfile:
+    dest: /etc/hosts
+    regexp: '.*db$'
+    line: "{{ hostvars[groups['apps'][0]].private_ip }} app1"
+    state: present
+  when: hostvars[groups['apps'][0]].private_ip is defined
+
+- name: add app2 host to /etc/hosts
+  lineinfile:
+    dest: /etc/hosts
+    regexp: '.*db$'
+    line: "{{ hostvars[groups['apps'][1]].private_ip }} app1"
+    state: present
+  when: hostvars[groups['apps'][1]].private_ip is defined
+
 - name: Install load balancer packages
   package:
     name: "{{ payload }}"
