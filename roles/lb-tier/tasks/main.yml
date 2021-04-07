@@ -11,7 +11,7 @@
   lineinfile:
     dest: /etc/hosts
     regexp: '.*db$'
-    line: "{{ hostvars[groups['apps'][1]].private_ip }} app1"
+    line: "{{ hostvars[groups['apps'][1]].private_ip }} app2"
     state: present
   when: hostvars[groups['apps'][1]].private_ip is defined
 
