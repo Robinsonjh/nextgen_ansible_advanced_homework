@@ -7,7 +7,10 @@
     scm_type: git
     scm_update_on_launch: yes
     scm_url: "{{ scm_url }}"
-    tower_config_file: "/root/.tower_cli.cfg"
+    tower_host: tower1.{{tower_guid}}.example.opentlc.com
+    tower_username: admin
+    tower_password: r3dh4t1!
+    tower_verify_ssl: no
 
 - name: Machine Credential to connect to workstation using openstack.pub
   tower_credential:
@@ -15,9 +18,12 @@
     organization: Default
     state: present
     kind: ssh
-    tower_config_file: "/root/.tower_cli.cfg"
     ssh_key_data: "/root/.ssh/openstack.pem"
     username: cloud-user
+    tower_host: tower1.{{tower_guid}}.example.opentlc.com
+    tower_username: admin
+    tower_password: r3dh4t1!
+    tower_verify_ssl: no
 
 - name: Create Inventory
   command: |
@@ -34,7 +40,10 @@
     description: "workstation"
     inventory: "{{static_inventory_name}}"
     state: present
-    tower_config_file: "/root/.tower_cli.cfg"
+    tower_host: tower1.{{tower_guid}}.example.opentlc.com
+    tower_username: admin
+    tower_password: r3dh4t1!
+    tower_verify_ssl: no
 
 - name: Associate workstation host to group 
   command: | 
@@ -47,9 +56,12 @@
     organization: Default
     state: present
     kind: ssh
-    tower_config_file: "/root/.tower_cli.cfg"
     ssh_key_data: "{{ lookup('file', '/root/.ssh/mykey.pem') }}"
     username: "{{ opentlc_login }}"
+    tower_host: tower1.{{tower_guid}}.example.opentlc.com
+    tower_username: admin
+    tower_password: r3dh4t1!
+    tower_verify_ssl: no
 
 - name: Remove secret
   file:
