@@ -19,9 +19,8 @@
 
   - name: Curl website
     uri:
-        url: "http://{{ groups.frontends[0] }}/ping"
+        url: "http://{{ groups.frontends[0] }}"
         return_content: yes
-    until: '"alive" in result.content'
     retries: 10
     delay: 1
     register: result
