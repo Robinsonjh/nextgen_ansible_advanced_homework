@@ -7,7 +7,8 @@
     scm_type: git
     scm_update_on_launch: yes
     scm_url: "{{ scm_url }}"
-    tower_host: tower1.{{tower_guid}}.example.opentlc.com
+    tower_guid: 
+    tower_host: tower1.{{tower_GUID}}.example.opentlc.com
     tower_username: admin
     tower_password: r3dh4t1!
     tower_verify_ssl: no
@@ -20,7 +21,7 @@
     kind: ssh
     ssh_key_data: "/root/.ssh/openstack.pem"
     username: cloud-user
-    tower_host: tower1.{{tower_guid}}.example.opentlc.com
+    tower_host: tower1.{{tower_GUID}}.example.opentlc.com
     tower_username: admin
     tower_password: r3dh4t1!
     tower_verify_ssl: no
@@ -40,7 +41,7 @@
     description: "workstation"
     inventory: "{{static_inventory_name}}"
     state: present
-    tower_host: tower1.{{tower_guid}}.example.opentlc.com
+    tower_host: tower1.{{tower_GUID}}.example.opentlc.com
     tower_username: admin
     tower_password: r3dh4t1!
     tower_verify_ssl: no
@@ -58,7 +59,7 @@
     kind: ssh
     ssh_key_data: "{{ lookup('file', '/root/.ssh/mykey.pem') }}"
     username: "{{ opentlc_login }}"
-    tower_host: tower1.{{tower_guid}}.example.opentlc.com
+    tower_host: tower1.{{tower_GUID}}.example.opentlc.com
     tower_username: admin
     tower_password: r3dh4t1!
     tower_verify_ssl: no
